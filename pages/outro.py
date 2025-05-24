@@ -13,6 +13,7 @@ if not st.session_state['uploaded']:
         column_name = f'{result["section"]}-{result["ref"]}'
         df.loc[df['group_id'] == result['group_id'], column_name] = result['value']
         df.loc[df['group_id'] == result['group_id'], 'done'] = 1
+        df.loc[df['group_id'] == result['group_id'], 'user'] = st.session_state['user']
     # Write df to google sheet
     conn = st.session_state['conn']
     conn.update(data=df)

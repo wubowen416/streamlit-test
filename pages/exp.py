@@ -14,7 +14,7 @@ def get_video_url(row, name=''):
 # Assign variables
 if 'sheet_rows' not in st.session_state:
     conn = st.connection("gsheets", type=GSheetsConnection)
-    df = conn.read()
+    df = conn.read(ttl="1s")
     st.session_state['df'] = df
     st.session_state['sheet_rows'] = []
     st.session_state['conn'] = conn
